@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="loader"></div>
+    <div class="head">
+    <h1>guess the num from 1 to 10</h1>
+    </div>
+    <input id="v1" />
+    <button onclick="getid()">check</button>
+    <p id="result">you are wrong/right</p>
+    <p id="r2">answer</p>
+    <p id="r3">score:10</p>
+    <script>
+      var box1 = document.getElementById("v1");
+      var box3 = Math.floor(Math.random() * 10) + 1;
+      var box5 = document.getElementById("result");
+      var box6 = document.getElementById("r2");
+      var box7 = "you r wrong";
+      var box8 = "you r right";
+      var box4 = document.getElementById("r3");
+      var box2 = 10;
+      function getid() {
+        var box9 = box1.value;
+
+        if (box3 == box9) {
+          console.log("right");
+          result.textContent = box8;
+          r2.textContent = box3;
+          alert("you won!");
+          window.location.reload();
+        } else {
+          console.log("wrong");
+          box2 = box2 - 1;
+          result.textContent = box7;
+          r3.textContent = "score:" + box2;
+          if (box2 <= 0) {
+            r2.textContent = "answer:" + box3;
+          }
+        }
+      }
+
+      window.addEventListener("load", () => {
+        const loader = document.querySelector(".loader");
+
+        loader.classList.add("loader--hidden");
+
+        loader.addEventListener("transitionend", () => {
+          document.body.removeChild(loader);
+        });
+      });
+    </script>
+  </body>
+</html>
